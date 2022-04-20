@@ -1,41 +1,65 @@
 html {
     min-height: 100%; 
     display: flex;
+    flex-direction: column;
+    padding: 0;
 }
 
 body {
     flex-grow: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0px;
 }
 
+.header{
+    background-color: #d74e13b6;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+}
 .frame{
     display: flex;
-    border: 2px solid red;
     width: 370px;
     height: 490px;
     flex-direction: column;
+    background-color: #4b4d62;
+    padding: 5px;
+    border: 5px solid #4b4d62;
+    border-radius: 15px;
 }
 
 .buttons{
-   border: 2px solid green;
    display: flex;
    flex-direction: column;
-   flex-grow: 3;
+   flex-grow: 5;
 }
 .screen{
     flex-grow: 1;
+    background-color: rgb(202, 215, 215);
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    padding-bottom: 5px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding-right: 5px;
+
+
 }
 .line{
     display: flex;
     justify-content: space-between;
     flex-grow: 1;
-    border: 1px solid gray;
 }
 .button{
     flex-grow: 1;
     margin: 2px;
+    margin-left: 3px;
 }
  
 #firstLine .operation {
@@ -82,17 +106,13 @@ body {
   font-size: 18px;
 }
 
-.num:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
 .num:hover {
   box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
 .num:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
+  box-shadow: #a1a1a8 0 3px 7px inset;
   transform: translateY(2px);
 }
 
@@ -126,9 +146,6 @@ body {
     font-size: 18px;
   }
   
-  .operation:focus {
-    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-  }
   
   .operation:hover {
     box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
@@ -139,4 +156,18 @@ body {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
   }
+  .footer{
+    display: flex;
+    flex-direction: row;
+    background-color: #d74e13b6;
+    width: 100%;
+    justify-content: center;
+}
+
+.gitHubLogo {
+    margin-left: 10px;
+}
+.boldText{
+    font-weight: bold;
+}
   
