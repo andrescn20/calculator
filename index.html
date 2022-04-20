@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script> 
+    <script src="script.js" defer></script>
 </head>
+
 <body>
     <div class="frame">
-        <div class="screen"></div>
-        <div class="horizontalControls"></div>
-        <div class="numbers"> 
+        <div class="screen">RESULT</div>
 
-            <div id="num0" class="num"></div>
-            <div id="num1" class="num"></div>
-            <div id="num2" class="num"></div>
-            <div id="num3" class="num"></div>
-            <div id="num4" class="num"></div>
-            <div id="num5" class="num"></div>
-            <div id="num6" class="num"></div>
-            <div id="num7" class="num"></div>
-            <div id="num8" class="num"></div>
-            <div id="num9" class="num"></div>
+        <div class="buttons" class="line">
 
+            <div id="firstLine">
+                <button id="clear" class="operation">AC</button>
+                <button id="sign" class="operation">+/-</button>
+                <button id="percentage" class="operation">%</button>
+                <button id="divide" class="operation">/</button>
+            </div>
+
+            <div id="secondLine" class="line">
+                <button id="num7" class="num">7</button>
+                <button id="num8" class="num">8</button>
+                <button id="num9" class="num">9</button>
+                <button id="multiply" class="operation">x</button>
+
+            </div>
+
+            <div id="thirdLine" class="line">
+                <button id="num4" class="num">4</button>
+                <button id="num5" class="num">5</button>
+                <button id="num6" class="num">6</button>
+                <button id="subtract" class="operation">-</button>
+
+            </div>
+
+            <div id="fourthLine" class="line">
+                <button id="num1" class="num">1</button>
+                <button id="num2" class="num">2</button>
+                <button id="num3" class="num">3</button>
+                <button id="sum" class="operation">+</button>
+            </div>
+
+            <div id="fifthLine" class="line">
+                <button id="num0" class="num">0</button>
+                <button id="decimal" class="num">.</button>
+                <button id="equal" class="operation">=</button>
+            </div>
         </div>
-        <div class="verticalControls"></div>
     </div>
 </body>
+
 </html>
