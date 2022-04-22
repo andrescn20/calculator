@@ -1,35 +1,17 @@
+const calculation = {
+    firstNumber: '',
+    operation: '',
+    secondNumber: ''
+};
 
-let inputs = {}
+let firstReady = false;
+
 let inputNumber = [];
 const screenNumber = document.createTextNode('');
+let operator = '';
+let secondOperation = false;
+let equalUsed = false; 
 
-// Fetch Buttons
-    //Controls:
-const clear = document.getElementById('clear');
-const equal = document.getElementById('equal');
-const sign = document.getElementById('sign');
-
-    //Operations:
-const percentage = document.getElementById('percentage');
-const divide = document.getElementById('divide');
-const multiply = document.getElementById('multiply');
-const subtract = document.getElementById('subtract');
-const decimal = document.getElementById('decimal');
-const sum = document.getElementById('sum');
-
-    //Numbers:
-const num1 = document.getElementById('num1');
-const num2 = document.getElementById('num2');
-const num3 = document.getElementById('num3');
-const num4 = document.getElementById('num4');
-const num5 = document.getElementById('num5');
-const num6 = document.getElementById('num6');
-const num7 = document.getElementById('num7');
-const num8 = document.getElementById('num8');
-const num9 = document.getElementById('num9');
-const num0 = document.getElementById('num0');
-
-//Fetch Screen Div:
 const screen = document.getElementById('screen');
 
 const numberBtns = document.querySelectorAll('.num');
@@ -37,16 +19,109 @@ numberBtns.forEach ((number) => {
 number.onclick = setNumber; 
 });
 
+const operationBtns = document.querySelectorAll('.operator');
+operationBtns.forEach ((operation) => {
+operation.onclick = setOperator;
+});
+
+const equalBtn = document.getElementById('equal');
+equalBtn.onclick = ()=>{
+    equalUsed = true;
+    result();
+}
+const percentageBtn = document.getElementById('percentage');
+percentageBtn.onclick = () => {
+    currentNumber = screen.innerHTML;
+    percentageResult = parseInt(currentNumber)/100;
+    screen.innerHTML = percentageResult;
+    firstReady = false;
+    inputNumber= [];
+}
+
+const clearBtn = document.getElementById('clear');
+clearBtn.onclick = () => {
+    inputNumber = [];
+    screen.innerHTML = '';
+    firstReady = false;
+    secondOperation = false;
+    calculation.firstNumber = '';
+    calculation.operation = '';
+    calculation.secondNumber = '';
+}
+
+
+function setOperator(e){
+    if (secondOperation === false && equalUsed === false){
+        inputNumber = [];
+        firstReady = true;
+        operator = e.target.innerHTML;
+        calculation.operation = operator;
+        screen.innerHTML = operator;
+        secondOperation = true;
+        
+    }else if (secondOperation === true && equalUsed === false) {
+        operator = e.target.innerHTML;
+        inputNumber = [];
+        firstReady = true;
+        calculation.operation = operator;
+        screen.innerHTML = operator;
+        result();
+    }else {
+        inputNumber = [];
+        firstReady = true;
+        operator = e.target.innerHTML;
+        calculation.operation = operator;
+        screen.innerHTML = operator;
+        secondOperation = true;
+    }
+}
+
 function setNumber(e){
     let selectedNumber = e.target.innerHTML;
     inputNumber.push(selectedNumber);
     printScreen(inputNumber);
-    console.log(inputNumber);
 }
-
 
 function printScreen(array){
 
-    let cleanNumber = array.toString().replace(/[',']/g , '');    
-    screen.innerHTML= cleanNumber;
+    let cleanOutput = array.toString().replace(/[',']/g , '');    
+    screen.innerHTML= cleanOutput;
+    setObjectNumbers(cleanOutput);
 }
+
+function setObjectNumbers(number){
+    if (firstReady === false){
+        calculation.firstNumber = number;
+
+    }else{
+        calculation.secondNumber = number;
+    }
+}
+
+function result(){
+
+    let first = parseInt(calculation.firstNumber);
+    let operator = calculation.operation;
+    let second = parseInt(calculation.secondNumber);
+    let result = null;
+
+    switch(operator){
+        case('+'): result = first + second; 
+                            break;
+        case('-'): result = first - second; 
+                            break;
+        case('/'): result = first / second; 
+                            break;
+        case('x'): result = first * second; 
+                            break;
+        default:   result = 'not yed coded'
+    }
+    printScreen(`${result}`);
+    calculation.firstNumber = result;
+    calculation.secondNumber ='';
+    calculation.operation = '';
+    inputNumber = [];
+
+
+}
+
