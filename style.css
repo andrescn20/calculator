@@ -38,7 +38,7 @@ body {
    flex-grow: 5;
 }
 .screen{
-    flex-grow: 1;
+    flex: 1.5 0 0;
     background-color: rgb(202, 215, 215);
     font-family: 'Orbitron', sans-serif;
     display: flex;
