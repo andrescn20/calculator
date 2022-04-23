@@ -8,7 +8,6 @@ const calculation = {
 let firstReady = false;
 
 let inputNumber = [];
-const screenNumber = document.createTextNode('');
 let operator = '';
 let secondOperation = false;
 
@@ -26,6 +25,7 @@ operation.onclick = setOperator;
 
 const equalBtn = document.getElementById('equal');
 equalBtn.onclick = ()=>{
+    secondOperation = false;
     calculate();
     
 }
@@ -62,13 +62,12 @@ function setOperator(e){
         
     }else if (secondOperation === true) {
         calculate();
-        // calculation.firstNumber = calculation.result;
         calculation.result = '';
         operator = e.target.innerHTML;
         inputNumber = [];
         firstReady = true;
         calculation.operation = operator;
-        screen.innerHTML = operator;
+        screen.innerHTML = calculation.firstNumber;
     }
 }
 
