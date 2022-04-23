@@ -32,7 +32,7 @@ equalBtn.onclick = ()=>{
 const percentageBtn = document.getElementById('percentage');
 percentageBtn.onclick = () => {
     currentNumber = screen.innerHTML;
-    percentageResult = parseInt(currentNumber)/100;
+    percentageResult = parseFloat(currentNumber)/100;
     screen.innerHTML = percentageResult;
     firstReady = false;
     inputNumber= [];
@@ -49,7 +49,14 @@ clearBtn.onclick = () => {
     calculation.secondNumber = '';
     calculation.result = '';
 }
-
+const signBtn = document.getElementById('sign');
+signBtn.onclick = () => {
+    if (firstnumber === ''){
+        screen.innerHTML = 'Please enter a number first'
+    }else{
+        screen.innerHtml = -1*parseFloat(firstNumber);
+    }
+}
 
 function setOperator(e){
     if (secondOperation === false){
@@ -95,9 +102,9 @@ function setObjectNumbers(number){
 
 function calculate(){
 
-    let first = parseInt(calculation.firstNumber);
+    let first = parseFloat(calculation.firstNumber);
     let operator = calculation.operation;
-    let second = parseInt(calculation.secondNumber);
+    let second = parseFloat(calculation.secondNumber);
     let result = null;
 
     switch(operator){
