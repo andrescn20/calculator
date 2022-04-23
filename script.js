@@ -1,7 +1,8 @@
 const calculation = {
     firstNumber: '',
     operation: '',
-    secondNumber: ''
+    secondNumber: '',
+    result: ''
 };
 
 let firstReady = false;
@@ -10,7 +11,6 @@ let inputNumber = [];
 const screenNumber = document.createTextNode('');
 let operator = '';
 let secondOperation = false;
-let equalUsed = false; 
 
 const screen = document.getElementById('screen');
 
@@ -26,8 +26,8 @@ operation.onclick = setOperator;
 
 const equalBtn = document.getElementById('equal');
 equalBtn.onclick = ()=>{
-    equalUsed = true;
-    result();
+    calculate();
+    
 }
 const percentageBtn = document.getElementById('percentage');
 percentageBtn.onclick = () => {
@@ -47,11 +47,12 @@ clearBtn.onclick = () => {
     calculation.firstNumber = '';
     calculation.operation = '';
     calculation.secondNumber = '';
+    calculation.result = '';
 }
 
 
 function setOperator(e){
-    if (secondOperation === false && equalUsed === false){
+    if (secondOperation === false){
         inputNumber = [];
         firstReady = true;
         operator = e.target.innerHTML;
@@ -59,20 +60,15 @@ function setOperator(e){
         screen.innerHTML = operator;
         secondOperation = true;
         
-    }else if (secondOperation === true && equalUsed === false) {
+    }else if (secondOperation === true) {
+        calculate();
+        // calculation.firstNumber = calculation.result;
+        calculation.result = '';
         operator = e.target.innerHTML;
         inputNumber = [];
         firstReady = true;
         calculation.operation = operator;
         screen.innerHTML = operator;
-        result();
-    }else {
-        inputNumber = [];
-        firstReady = true;
-        operator = e.target.innerHTML;
-        calculation.operation = operator;
-        screen.innerHTML = operator;
-        secondOperation = true;
     }
 }
 
@@ -98,7 +94,7 @@ function setObjectNumbers(number){
     }
 }
 
-function result(){
+function calculate(){
 
     let first = parseInt(calculation.firstNumber);
     let operator = calculation.operation;
@@ -117,6 +113,7 @@ function result(){
         default:   result = 'not yed coded'
     }
     printScreen(`${result}`);
+    calculation.result = result;
     calculation.firstNumber = result;
     calculation.secondNumber ='';
     calculation.operation = '';
