@@ -31,17 +31,24 @@ equalBtn.onclick = ()=>{
 }
 const percentageBtn = document.getElementById('percentage');
 percentageBtn.onclick = () => {
-    currentNumber = screen.innerHTML;
-    percentageResult = parseFloat(currentNumber)/100;
-    screen.innerHTML = percentageResult;
-    firstReady = false;
-    inputNumber= [];
+    if (firstReady === false){
+
+        screen.innerHTML = 'Please enter a number.'
+
+    }
+    else{
+        currentNumber = screen.innerHTML;
+        percentageResult = parseFloat(currentNumber)/100;
+        screen.innerHTML = percentageResult;
+        firstReady = false;
+        inputNumber= [];
+    }
 }
 
 const clearBtn = document.getElementById('clear');
 clearBtn.onclick = () => {
     inputNumber = [];
-    screen.innerHTML = '';
+    screen.innerHTML = 'Waiting for input...';
     firstReady = false;
     secondOperation = false;
     calculation.firstNumber = '';
@@ -49,12 +56,15 @@ clearBtn.onclick = () => {
     calculation.secondNumber = '';
     calculation.result = '';
 }
+
 const signBtn = document.getElementById('sign');
 signBtn.onclick = () => {
-    if (firstnumber === ''){
+    if (firstReady === false){
         screen.innerHTML = 'Please enter a number first'
     }else{
-        screen.innerHtml = -1*parseFloat(firstNumber);
+     currentNumber = parseFloat(screen.innerHTML);
+     screen.innerHTML = -1*currentNumber;
+     calculation.firstNumber = screen.innerHTML;
     }
 }
 
@@ -82,6 +92,7 @@ function setNumber(e){
     let selectedNumber = e.target.innerHTML;
     inputNumber.push(selectedNumber);
     printScreen(inputNumber);
+    firstReady = true;
 }
 
 function printScreen(array){
@@ -115,6 +126,8 @@ function calculate(){
         case('/'): result = first / second; 
                             break;
         case('x'): result = first * second; 
+                            break;
+        case('+/-'): result = first*(-1);
                             break;
         default:   result = 'not yed coded'
     }
