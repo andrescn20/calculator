@@ -42,6 +42,7 @@ percentageBtn.onclick = () => {
         screen.innerHTML = percentageResult;
         firstReady = false;
         inputNumber= [];
+        calculation.result = screen.innerHTML;
     }
 }
 
@@ -65,6 +66,8 @@ signBtn.onclick = () => {
      currentNumber = parseFloat(screen.innerHTML);
      screen.innerHTML = -1*currentNumber;
      calculation.firstNumber = screen.innerHTML;
+     calculation.result = screen.innerHTML;
+
     }
 }
 
@@ -92,7 +95,6 @@ function setNumber(e){
     let selectedNumber = e.target.innerHTML;
     inputNumber.push(selectedNumber);
     printScreen(inputNumber);
-    firstReady = true;
 }
 
 function printScreen(array){
@@ -129,7 +131,7 @@ function calculate(){
                             break;
         case('+/-'): result = first*(-1);
                             break;
-        default:   result = 'not yed coded'
+        default:   result = calculation.result;
     }
     printScreen(`${result}`);
     calculation.result = result;
@@ -139,5 +141,12 @@ function calculate(){
     inputNumber = [];
 
 
+}   
+
+boton.onclick = myticalFunction();
+
+function myticalFunction(){
+    return hello;
 }
 
+boton.onclick = () => (hello); 
